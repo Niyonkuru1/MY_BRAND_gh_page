@@ -80,19 +80,7 @@ const password = loginForm.password.value
 function startAdminPage() {
     window.location.href = '../../admin/posts/index.html';
 }
-function generate_table() {
-    // get the reference for the body
-    let button = document.createElement("button");
-    let parentRef = document.querySelector('.parent-box');
-    let anchor = document.createElement("a");
-    anchor.setAttribute('href', '../../admin/posts/index.html');
-    anchor.innerHTML = "Continue";
-    button.className = "btn parentRight";
-    button.append(anchor);
-    // parentRef.append(button);
-      }
-
-      let logout = document.querySelector(.cont);
+  let logout = document.querySelector('.cont');
       let button = document.createElement(".cont");
       let anch = document.createElement ('a');
       anch.innerHTML = 'Logout';

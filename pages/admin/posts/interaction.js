@@ -14,6 +14,7 @@
     storageBucket: "admin-demo-7d3c5.appspot.com",
     messagingSenderId: "961539757601",
     appId: "1:961539757601:web:99007960d258cac90bf560"
+
   };
 
   // Initialize Firebas
@@ -21,8 +22,6 @@
 
   const db = getFirestore(app)
   const ref = collection(db,"admin")
-
-
 
 
  // FETCHING ALL DATA FROM DATABASE AND DISPLAY THEM IN THE TABLE
@@ -34,11 +33,9 @@
   console.log(data);
   let ar = [];
   for (let g=0; g < data.length; g++){
-
       //Calling the generate table function to add the fetched data
       // into the DOM
     generate_table(data[g]["Title"], data[g]["id"]);
-
     //Making the array to see the data in the console.
     ar.push(data[g]["Title"]);
   }
@@ -81,5 +78,8 @@ newRow.innerHTML = dt;
       }
     }  
 
+
+
+    
       
     
