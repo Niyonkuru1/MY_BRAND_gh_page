@@ -16,6 +16,7 @@ import {getFirestore, collection,
     messagingSenderId: "961539757601",
     appId: "1:961539757601:web:c13ad8d2ecf4d1840bf560"
   };
+  const auth = getAuth(app)
 
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
