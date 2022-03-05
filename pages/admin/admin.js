@@ -4,8 +4,8 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.7/firebase
   // TODO: Add SDKs for Firebase products that you want to use
 import {getFirestore, collection, 
   addDoc, deleteDoc, doc,
-  query, where, onSnapshot,
-  orderBy, getDoc,getDocs
+  query, where, onSnapshot, serverTimestamp
+  , getDoc,getDocs
  } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore.js"
   // Your web app's Firebase configuration
   const firebaseConfig = {
@@ -16,13 +16,13 @@ import {getFirestore, collection,
     messagingSenderId: "961539757601",
     appId: "1:961539757601:web:c13ad8d2ecf4d1840bf560"
   };
-  const auth = getAuth(app)
+  // const auth = getAuth(app)
 
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
 
   const db = getFirestore(app)
-  const ref = collection(db,"admin")
+  const ref = collection(db,"admin-page")
    
   // ADDING the datas into database
   const addPost = document.querySelector("#posti")
@@ -30,35 +30,36 @@ import {getFirestore, collection,
       e.preventDefault()
       addDoc(ref, {
         Title: addPost.title.value,
-        Body: addPost.body.value
+        Body: addPost.body.value,
+        CreatedAt: serverTimestamp() 
     })
     .then(() => {
-        // console.log("it has been done")
+        console.log("it has been done")
         addPost.reset()
     })
   })
 
   // DELETING the datas from db
-  const deleteBookForm = document.querySelector("#delete")
-     deleteBookForm.addEventListener('submit', (e) => {
-         e.preventDefault();
-         const docRef = doc(db, "admin", deleteBookForm.id.value)
+  // const deleteBookForm = document.querySelector("#delete")
+  //    deleteBookForm.addEventListener('submit', (e) => {
+  //        e.preventDefault();
+  //        const docRef = doc(db, "admin", deleteBookForm.id.value)
     
-         deleteDoc(docRef).then(()=>{
-            deleteBookForm.reset()
-        })
-     })
+  //        deleteDoc(docRef).then(()=>{
+  //           deleteBookForm.reset()
+  //       })
+  //    })
 
-    // Real time database
-      onSnapshot(ref, (snapshor)=>{
-        let data = []
-      snapshor.docs.forEach((doc) => {
-        data.push({ ...doc.data(), id: doc.id})
-      })
-      let ar = [];
-      for (let g=0; g < data.length; g++){
-        ar.push(data[g]["Title"]);
-        console.log(ar)
-      }
-      })
+  //   // Real time database
+  //     onSnapshot(ref, (snapshor)=>{
+  //       let data = []
+  //     snapshor.docs.forEach((doc) => {
+  //       data.push({ ...doc.data(), id: doc.id})
+  //     })
+  //     let ar = [];
+  //     for (let g=0; g < data.length; g++){
+  //       ar.push(data[g]["Title"]);
+  //       console.log(ar)
+  //     }
+  //     })
       // console.log(ar)
