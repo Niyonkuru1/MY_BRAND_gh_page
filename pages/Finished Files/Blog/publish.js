@@ -4,7 +4,7 @@
   // https://firebase.google.com/docs/web/setup#available-libraries
 
   import { getFirestore, arrayUnion, doc,
-     collection, onSnapshot
+     collection, onSnapshot,getDocs,getDoc
 } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore.js"
   // Your web app's Firebase configuration
   const firebaseConfig = {
@@ -21,23 +21,74 @@
 const db = getFirestore(app);
 const ref = collection(db,"admin-page")
 
-onSnapshot(ref, (snapshor)=>{
-  // getDocs(ref).then((snapshor)=>{
+// onSnapshot(ref, (snapshor)=>{
+  getDocs(ref).then((snapshor)=>{
   let data = []
 snapshor.docs.forEach((doc) => {
   data.push({ ...doc.data(), id: doc.id})
 })
-console.log(data.length)
-let ar = [];
+console.log(data);
+let arr_id = [];
 for (let g=0; g < data.length; g++){
-    //Calling the generate table function to add the fetched data into the DOM
+    //Calling the generate table function to add the fetched data
+    // into the DOM
   generateBlogCard(data[g]["Title"],data[g]["Body"], 
-  data[g]["CreatedAt"].toDate().toDateString())
-  // ar.push(data[g]["Title"]);
+  data[g]["CreatedAt"].toDate().toDateString(), data[g]["id"])
+  arr_id.push(data[g]["id"]);
 }
+console.log(arr_id);
+// for (let p=0; p < arr_id.length; p++){
+  // var hummer = arr_id;
+let buttoni = document.querySelectorAll(".kanda")
+buttoni.forEach((buttonItem, index)=>{
+  buttonItem.addEventListener("click",(e)=>{
+    console.log("hello " + index);
+    if (e.target.getAttribute("card_id") == arr_id[index]){
+      console.log(`Ukanze iyi idi ${arr_id[index]} and same to this ${e.target.getAttribute("card_id")}`)
+      // let mainArticleDiv = document.createElement("main")
+      const docRef = doc(db, "admin-page", arr_id[index]);
+      getDoc(docRef)
+      .then((doc)=>{
+        console.log(`Document data:`,doc.data(), doc.id);
+ 
+      let  dateArticleDiv = document.createElement("div")
+      dateArticleDiv.className = "date"
+      dateArticleDiv.appendChild(document.createTextNode(doc.data().CreatedAt))
+
+
+      let authorArticleDiv = document.createElement("div")
+      authorArticleDiv.className = "author"
+      authorArticleDiv.appendChild(document.createTextNode("NIYONKURU Sylvain"))
+      
+      let titleArticleDiv = document.createElement("div")
+      titleArticleDiv.className = "title"
+      titleArticleDiv.appendChild(document.createTextNode(doc.data().Title))
+
+      let bodyArticleDiv = document.createElement("div")
+      bodyArticleDiv.className = "body"
+      let paraArticleDiv = document.createElement("p")
+      paraArticleDiv.appendChild(document.createTextNode(doc.data().Body))
+      bodyArticleDiv.appendChild(paraArticleDiv)
+
+      let articleDiv = document.createElement("div")
+      articleDiv.setAttribute("id", doc.id)
+
+      articleDiv.appendChild(dateArticleDiv)
+      articleDiv.appendChild(authorArticleDiv)
+      articleDiv.appendChild(titleArticleDiv)
+      articleDiv.appendChild(bodyArticleDiv)
+      // headingDiv.appendChild(document.createTextNode(title))
+      // headDiv.appendChild(headingDiv)
+    });
+    }
+    
+ })
 })
+
+// }
+  })
 //   FUNCTION TO ADD ROW BELOW THE TABLE
-function generateBlogCard(title,body, dateCreated) {
+function generateBlogCard(title,body, dateCreated, Id) {
 
   let mainDiv = document.getElementById('wrapper-main')
   let containerDiv = document.createElement("div")
@@ -72,12 +123,12 @@ function generateBlogCard(title,body, dateCreated) {
   buttonDiv.className = "button"
   let anchorElement = document.createElement("a")
   anchorElement.appendChild(document.createTextNode("READ MORE"))
-  anchorElement.className = "#article1"
+  anchorElement.setAttribute("href",'#')
+  anchorElement.setAttribute("card_id",Id)
+  anchorElement.className = "kanda";
   buttonDiv.appendChild(anchorElement)
   tostyleDiv.appendChild(buttonDiv)
   headDiv.appendChild(tostyleDiv)
-
-
   containerDiv.appendChild(imgDiv)
   containerDiv.appendChild(headDiv)
 
