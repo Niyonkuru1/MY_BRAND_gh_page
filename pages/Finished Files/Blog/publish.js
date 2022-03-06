@@ -49,27 +49,24 @@ buttoni.forEach((buttonItem, index)=>{
       const docRef = doc(db, "admin-page", arr_id[index]);
       getDoc(docRef)
       .then((doc)=>{
-        console.log(`Document data:`,doc.data(), doc.id);
- 
+        console.log(`Document data:`,doc.data().Body, doc.id);
+        // let bodyRef = document.getElementsByTagName("body")
+        // console.log(bodyRef);
+let mainContent = document.getElementById(doc.id);
       let  dateArticleDiv = document.createElement("div")
       dateArticleDiv.className = "date"
-      dateArticleDiv.appendChild(document.createTextNode(doc.data().CreatedAt))
-
-
+      dateArticleDiv.appendChild(document.createTextNode(` Date created: ${doc.data().CreatedAt.toDate().toDateString()}`))
       let authorArticleDiv = document.createElement("div")
       authorArticleDiv.className = "author"
-      authorArticleDiv.appendChild(document.createTextNode("NIYONKURU Sylvain"))
-      
+      authorArticleDiv.appendChild(document.createTextNode("Author: "+"NIYONKURU Sylvain"))
       let titleArticleDiv = document.createElement("div")
       titleArticleDiv.className = "title"
       titleArticleDiv.appendChild(document.createTextNode(doc.data().Title))
-
       let bodyArticleDiv = document.createElement("div")
       bodyArticleDiv.className = "body"
       let paraArticleDiv = document.createElement("p")
       paraArticleDiv.appendChild(document.createTextNode(doc.data().Body))
       bodyArticleDiv.appendChild(paraArticleDiv)
-
       let articleDiv = document.createElement("div")
       articleDiv.setAttribute("id", doc.id)
 
@@ -77,6 +74,9 @@ buttoni.forEach((buttonItem, index)=>{
       articleDiv.appendChild(authorArticleDiv)
       articleDiv.appendChild(titleArticleDiv)
       articleDiv.appendChild(bodyArticleDiv)
+
+      mainContent.appendChild(articleDiv)
+      // bodyRef.appendChild(articleDiv);
       // headingDiv.appendChild(document.createTextNode(title))
       // headDiv.appendChild(headingDiv)
     });
@@ -90,40 +90,39 @@ buttoni.forEach((buttonItem, index)=>{
 //   FUNCTION TO ADD ROW BELOW THE TABLE
 function generateBlogCard(title,body, dateCreated, Id) {
 
+let parentDiv = document.getElementById('parent');
+let mainContentDiv = document.createElement('div')
+mainContentDiv.id = `${Id}`
+parentDiv.appendChild(mainContentDiv);
+
   let mainDiv = document.getElementById('wrapper-main')
   let containerDiv = document.createElement("div")
   containerDiv.className = "container"
-
   let imgDiv = document.createElement("div")
   imgDiv.className = "image"
   let image = document.createElement("img")
   image.setAttribute('src','/images/project.png')
   imgDiv.appendChild(image)
-
   let headDiv = document.createElement("div")
   headDiv.className = "head"
-
   let headingDiv = document.createElement("div")
   headingDiv.className = "heading"
   headingDiv.appendChild(document.createTextNode(title))
   headDiv.appendChild(headingDiv)
-
   let dateDiv = document.createElement("div")
   dateDiv.className = "date"
   dateDiv.appendChild(document.createTextNode(dateCreated))
   headDiv.appendChild(dateDiv)
-
   let paraDiv = document.createElement("p")
   paraDiv.appendChild(document.createTextNode(body))
   headDiv.appendChild(paraDiv)
-
   let tostyleDiv= document.createElement("div")
   tostyleDiv.className = "toStyleButton"
   let buttonDiv = document.createElement("div")
   buttonDiv.className = "button"
   let anchorElement = document.createElement("a")
   anchorElement.appendChild(document.createTextNode("READ MORE"))
-  anchorElement.setAttribute("href",'#')
+  anchorElement.setAttribute("href",`#${Id}`)
   anchorElement.setAttribute("card_id",Id)
   anchorElement.className = "kanda";
   buttonDiv.appendChild(anchorElement)
