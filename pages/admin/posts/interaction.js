@@ -107,9 +107,9 @@ function updateItem(ere){
    console.log(docSnapu.data().Title);
    console.log(docSnapu.data().Body);
   //  window.location.href = 'update.html';
-   console.log(addDoc);
-    getElementById("title").value = docSnapu.data().Title;
-    getElementById("body").value = docSnapu.data().Body;
+  //  console.log(addDoc);
+    // getElementById("title").value = docSnapu.data().Title;
+    // getElementById("body").value = docSnapu.data().Body;
  }
 // }
 
