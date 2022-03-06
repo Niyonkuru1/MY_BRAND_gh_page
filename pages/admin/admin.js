@@ -31,7 +31,8 @@ import {getFirestore, collection,
       addDoc(ref, {
         Title: addPost.title.value,
         Body: addPost.body.value,
-        CreatedAt: serverTimestamp() 
+        CreatedAt: serverTimestamp(),
+        
     })
     .then(() => {
         console.log("it has been done")

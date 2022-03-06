@@ -52,7 +52,9 @@ buttoni.forEach((buttonItem, index)=>{
         console.log(`Document data:`,doc.data().Body, doc.id);
         // let bodyRef = document.getElementsByTagName("body")
         // console.log(bodyRef);
+        console.log(doc.id)
 let mainContent = document.getElementById(doc.id);
+console.log(mainContent)
       let  dateArticleDiv = document.createElement("div")
       dateArticleDiv.className = "date"
       dateArticleDiv.appendChild(document.createTextNode(` Date created: ${doc.data().CreatedAt.toDate().toDateString()}`))
@@ -85,6 +87,22 @@ let mainContent = document.getElementById(doc.id);
  })
 })
 
+let commenti = document.querySelectorAll('.comment')
+commenti.forEach((comItem,index)=>{
+  let secondMain = document.getElementById(`com${arr_id[index]}`)
+comItem.addEventListener("click", (e)=>{
+  let formEL = document.createElement('form');
+let textArea = document.createElement('textarea')
+textArea.setAttribute("placeholder", "Enter your comment here")
+let submitBtn = document.createElement('button')
+submitBtn.setAttribute("type", "submit")
+submitBtn.appendChild(document.createTextNode('Add your comment'))
+formEL.appendChild(textArea);
+formEL.appendChild(submitBtn);
+secondMain.appendChild(formEL);
+})
+})
+
 // }
   })
 //   FUNCTION TO ADD ROW BELOW THE TABLE
@@ -93,7 +111,10 @@ function generateBlogCard(title,body, dateCreated, Id) {
 let parentDiv = document.getElementById('parent');
 let mainContentDiv = document.createElement('div')
 mainContentDiv.id = `${Id}`
-parentDiv.appendChild(mainContentDiv);
+
+// let mainPopupDiv = document.createElement('div')
+// mainPopupDiv.id = `com${Id}`
+// parentDiv.appendChild(mainPopupDiv);
 
   let mainDiv = document.getElementById('wrapper-main')
   let containerDiv = document.createElement("div")
@@ -125,8 +146,17 @@ parentDiv.appendChild(mainContentDiv);
   anchorElement.setAttribute("href",`#${Id}`)
   anchorElement.setAttribute("card_id",Id)
   anchorElement.className = "kanda";
+
+  let comElement = document.createElement("a")
+  comElement.appendChild(document.createTextNode("ADD COMMENT"))
+  comElement.setAttribute("href",`#com${Id}`)
+  comElement.setAttribute("card_id",Id)
+  comElement.className = "comment";
+
   buttonDiv.appendChild(anchorElement)
+  buttonDiv.appendChild(comElement)
   tostyleDiv.appendChild(buttonDiv)
+
   headDiv.appendChild(tostyleDiv)
   containerDiv.appendChild(imgDiv)
   containerDiv.appendChild(headDiv)
