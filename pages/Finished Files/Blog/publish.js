@@ -30,11 +30,10 @@ snapshor.docs.forEach((doc) => {
 console.log(data.length)
 let ar = [];
 for (let g=0; g < data.length; g++){
-    //Calling the generate table function to add the fetched data
-    // into the DOM
+    //Calling the generate table function to add the fetched data into the DOM
   generateBlogCard(data[g]["Title"],data[g]["Body"], 
   data[g]["CreatedAt"].toDate().toDateString())
-  ar.push(data[g]["Title"]);
+  // ar.push(data[g]["Title"]);
 }
 })
 //   FUNCTION TO ADD ROW BELOW THE TABLE
