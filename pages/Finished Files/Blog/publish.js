@@ -4,7 +4,7 @@
   // https://firebase.google.com/docs/web/setup#available-libraries
 
   import { getFirestore, arrayUnion, doc,
-     collection, onSnapshot,getDocs,getDoc
+     collection, onSnapshot,getDocs,getDoc, updateDoc
 } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore.js"
   // Your web app's Firebase configuration
   const firebaseConfig = {
@@ -92,19 +92,40 @@ commenti.forEach((comItem,index)=>{
   let secondMain = document.getElementById(`com${arr_id[index]}`)
 comItem.addEventListener("click", (e)=>{
   let formEL = document.createElement('form');
+  formEL.id = "addComArr"
+formEL.setAttribute("formId", arr_id[index])
 let textArea = document.createElement('textarea')
 textArea.setAttribute("placeholder", "Enter your comment here")
+textArea.setAttribute("name", "area")
 let submitBtn = document.createElement('button')
 submitBtn.setAttribute("type", "submit")
 submitBtn.appendChild(document.createTextNode('Add your comment'))
 formEL.appendChild(textArea);
 formEL.appendChild(submitBtn);
 secondMain.appendChild(formEL);
+addComment()
 })
 })
-
-// }
   })
+
+function addComment(){
+  const updateArrComment = document.getElementById('addComArr')
+  updateArrComment.addEventListener('submit',(e)=>{
+    e.preventDefault()
+  const ide = e.target.getAttribute('formid')
+    console.log("hello form we, with this id:...  " +
+     ide)
+     const ref = doc(db, 'admin-page',ide)
+     let textAreaValue = updateArrComment.area.value
+     console.log(textAreaValue)
+     updateDoc(ref, {
+        commentArr: arrayUnion(`${textAreaValue}`)
+     }).then(()=>{
+       updateArrComment.reset()
+       console.log("updated successfully!!!");
+     })
+  })
+}
 //   FUNCTION TO ADD ROW BELOW THE TABLE
 function generateBlogCard(title,body, dateCreated, Id) {
 
@@ -112,9 +133,9 @@ let parentDiv = document.getElementById('parent');
 let mainContentDiv = document.createElement('div')
 mainContentDiv.id = `${Id}`
 
-// let mainPopupDiv = document.createElement('div')
-// mainPopupDiv.id = `com${Id}`
-// parentDiv.appendChild(mainPopupDiv);
+let mainPopupDiv = document.createElement('div')
+mainPopupDiv.id = `com${Id}`
+parentDiv.appendChild(mainPopupDiv);
 
   let mainDiv = document.getElementById('wrapper-main')
   let containerDiv = document.createElement("div")
@@ -162,4 +183,6 @@ mainContentDiv.id = `${Id}`
   containerDiv.appendChild(headDiv)
 
   mainDiv.appendChild(containerDiv)
+
+parentDiv.appendChild(mainContentDiv);
     }

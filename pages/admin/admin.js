@@ -32,7 +32,7 @@ import {getFirestore, collection,
         Title: addPost.title.value,
         Body: addPost.body.value,
         CreatedAt: serverTimestamp(),
-        
+        commentArr: []
     })
     .then(() => {
         console.log("it has been done")
