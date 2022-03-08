@@ -45,72 +45,16 @@
                         sylvainniyonkuru2@gmail.com
                     </div>
             </div>
-            <form action="" class="parentRight">
+            <form action="" class="parentRight" id="contacti">
                 <h2>Contact me</h2>
-                <input type="text" class="field"  id="name" placeholder="Your Name">
-                <input type="email" class="field" id="email" placeholder="Your Email">
-                <input type="text" class="field" id="phone" placeholder="Your Phone">
+                <input type="text" name="name" class="field"  id="name" placeholder="Your Name">
+                <input type="email" name='email' class="field" id="email" placeholder="Your Email">
+                <input type="text" name='phone' class="field" id="phone" placeholder="Your Phone">
                 <textarea class="field area" id="message" placeholder="Message"></textarea>
-                <!-- <button type ="submit" class="btn">Send</button>  -->
-                <button  id="insertBtn" class="btn">Send</button> 
-                <!-- <button  id  = "selectBtn" class="btn">Select the data from DB</button> 
-                <button  id="updateBtn" class="btn">Update the data in DB</button> 
-                <button  id="deleteBtn" class="btn">Delete the data in DB</button>  -->
+                <button type="submit" id="insertBtn" class="btn">Send Message</button> 
             </form>
         </div>
     </div>
-    <!-- <script type="module">
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-app.js";
-
-        const firebaseConfig = {
-          apiKey: "AIzaSyCLawvgrezZE_XVjQ0ZpmdF-v3GpZ6_c94",
-          authDomain: "sylvain-app.firebaseapp.com",
-          projectId: "sylvain-app",
-          storageBucket: "sylvain-app.appspot.com",
-          messagingSenderId: "29273187052",
-          appId: "1:29273187052:web:44ee7158bbabb52e90bbc9"
-        };
-      
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        import {getFirestore, doc, getDoc, setDoc, collection, addDoc, updateDoc, deleteDoc, deleteField
-        } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore.js"; 
-
-        const db = getFirestore();
-
-// ---------- Reference --------------
-    // for input data
-    let Name = document.getElementById("name");
-    let Email = document.getElementById("email");
-    let Phone = document.getElementById("phone");
-    let Message = document.getElementById("message"); 
-
-    let insertBtn = document.getElementById("insertBtn");
-    let selectBtn = document.getElementById("selectBtn");
-    let updateBtn = document.getElementById("updateBtn");
-    let deleteBtn = document.getElementById("deleteBtn");
-
-    // ------- ADDING THE DOCUMENT--------
-    async function AddDocument_customID(){
-        console.log("button clicked");
-        var ref = doc(db, "TheVisitorsList", Phone.value);
-        const docRef = await setDoc(ref,{
-            NameOfVisitor: Name.value,
-            EmailOfVisitor: Email.value,
-            PhoneOfVisitor: Phone.value,
-            MesageOfVisitor: Message.value
-        }
-    )
-    .then(() =>{
-        alert("Data added successfully");
-    })
-    .catch((error)=>{
-        alert(" Operation not successful. the Error: "+ error);
-    })
-    }
-    // Adding EVENTS to the BUTTONS to do the task required
-    insertBtn.addEventListener("click", AddDocument_customID);
-      </script> -->
+    <script type="module" src="./addContact.js"></script>
 </body>
 </html>

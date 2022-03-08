@@ -35,7 +35,7 @@ import {getFirestore, collection,
         commentArr: []
     })
     .then(() => {
-        console.log("it has been done")
+        console.log("The post has been added SUCCESSFULLY!!!!");
         addPost.reset()
     })
   })
