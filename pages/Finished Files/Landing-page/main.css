@@ -70,7 +70,7 @@ ul a {
 /* Navbar end  */
 .mainRight>img {
     width: 50%
-    height: auto;
+    /* height: auto; */
 }
 
 .mainRight {
@@ -131,8 +131,6 @@ ul>li>a {
     justify-content: center;
 }
 
-
-}
 .line {
     display: flex;
     flex-direction: row;
