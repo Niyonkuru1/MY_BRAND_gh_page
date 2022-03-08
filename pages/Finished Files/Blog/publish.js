@@ -50,10 +50,8 @@ buttoni.forEach((buttonItem, index)=>{
       getDoc(docRef)
       .then((doc)=>{
         console.log(`Document data:`,doc.data().Body, doc.id);
-        // let bodyRef = document.getElementsByTagName("body")
-        // console.log(bodyRef);
         console.log(doc.id)
-let mainContent = document.getElementById(doc.id);
+let mainContent = document.getElementById('readMore');
 console.log(mainContent)
       let  dateArticleDiv = document.createElement("div")
       dateArticleDiv.className = "date"
@@ -71,16 +69,15 @@ console.log(mainContent)
       bodyArticleDiv.appendChild(paraArticleDiv)
       let articleDiv = document.createElement("div")
       articleDiv.setAttribute("id", doc.id)
-
       articleDiv.appendChild(dateArticleDiv)
       articleDiv.appendChild(authorArticleDiv)
       articleDiv.appendChild(titleArticleDiv)
       articleDiv.appendChild(bodyArticleDiv)
+      mainContent.append(articleDiv)
 
-      mainContent.appendChild(articleDiv)
-      // bodyRef.appendChild(articleDiv);
-      // headingDiv.appendChild(document.createTextNode(title))
-      // headDiv.appendChild(headingDiv)
+      console.log("going to new page")
+
+      window.location.href = './readMore.html';
     });
     }
     
@@ -96,6 +93,9 @@ formEL.setAttribute("formId", arr_id[index])
 let textArea = document.createElement('textarea')
 textArea.setAttribute("placeholder", "Enter your comment here")
 textArea.setAttribute("name", "area")
+textArea.setAttribute("rows", "7")
+textArea.setAttribute("cols", "50")
+textArea.id = "textarea";
 let submitBtn = document.createElement('button')
 submitBtn.setAttribute("type", "submit")
 submitBtn.appendChild(document.createTextNode('Add your comment'))
@@ -105,8 +105,9 @@ secondMain.appendChild(formEL);
 addComment()
 })
 })
-  })
-
+// document.location.reload();
+})
+// document.location.reload();
 function addComment(){
   const updateArrComment = document.getElementById('addComArr')
   updateArrComment.addEventListener('submit',(e)=>{
@@ -122,6 +123,7 @@ function addComment(){
      }).then(()=>{
        updateArrComment.reset()
        console.log("COMMENT added successfully!!!");
+       document.location.reload();
      })
   })
 }

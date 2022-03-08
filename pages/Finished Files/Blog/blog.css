@@ -87,7 +87,7 @@ ul a {
 
 .header p {
     font-size: 2em;
-    padding-top: 3em;
+    padding-top: 2em;
 }
 
 /* .mainContent img {
@@ -96,12 +96,19 @@ ul a {
 .container{
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 .image{
-    flex: 3;
+    flex: 5;
 }
 .head{
-    flex: 6;
+    flex: 5;
+    padding-left: 1em;
+    align-self: center;
+    font-size: 1.7em;
+    font-weight: 300;
+    /* justify-items: center; */
+
 }
 
 .image img {
@@ -111,21 +118,60 @@ ul a {
 }
 
 .heading {
-    font-size: 2em;
-    font-weight: 700;
+    font-size: 1.7em;
+    font-weight: 350;
+    margin-bottom: 0.3em;
+    justify-self: center;
+    
 }
 
 .date {
-    letter-spacing: 0.2em;
-    font-size: 1em;
-    font-weight: 500;
+    letter-spacing: 0.1em;
+    font-size: 16px;
+    font-weight: 350;
+    margin-bottom: 0.4em;
 }
 
 .container {
-    background-color: bisque;
+    background-color: rgb(255, 255, 255);
     border-radius: 1em;
     padding: 1em;
+    box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
 }
+
+.kanda, .comment {
+    text-decoration: none;
+    font-family: 'Gill Sans', 'Gill Sans MT',
+     Calibri, 'Trebuchet MS', sans-serif;
+     font-size: 0.6em;
+    padding: 0.4em;
+     /* margin-left: 2em; */
+     background-color:rgb(190, 146, 231);
+     border-radius: .9em;
+     color: white;
+     display: block;
+     margin-top: 0.6em;
+     box-shadow: 0 10px 20px -8px
+      rgba(0, 0, 0,.7);
+      width: 50%;
+      font-size: .5em;
+     /* margin-top; */
+     /* background-color: #EB00FF; */
+}
+
+div > #addComArr {
+    
+    margin: 20%;
+    height:  
+}
+
+.button {
+    justify-self: center;
+}
+.comment {
+    /* margin-left: 7em; */
+}
+
 
 @media screen and (max-width:900px){
     .image img {
@@ -160,6 +206,27 @@ ul a {
         display: block;
         /* justify-content: space-between; */
     }
+
+    .kanda, .comment {
+        text-decoration: none;
+        font-family: 'Gill Sans', 'Gill Sans MT',
+         Calibri, 'Trebuchet MS', sans-serif;
+         font-size: 0.6em;
+        padding: 0.6em;
+         margin-left: 2em;
+         background-color:rgb(190, 146, 231);
+         border-radius: .9em;
+         color: white;
+         display: inline;
+         box-shadow: 0 10px 20px -8px 
+         rgba(0, 0, 0,.7);
+         /* margin-top; */
+         /* background-color: #EB00FF; */
+    }
+    .comment {
+        margin-left: 7em;
+    }
+
 }
 
 .articles{
