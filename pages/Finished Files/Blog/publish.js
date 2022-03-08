@@ -86,7 +86,6 @@ console.log(mainContent)
     
  })
 })
-
 let commenti = document.querySelectorAll('.comment')
 commenti.forEach((comItem,index)=>{
   let secondMain = document.getElementById(`com${arr_id[index]}`)
@@ -122,13 +121,13 @@ function addComment(){
         commentArr: arrayUnion(`${textAreaValue}`)
      }).then(()=>{
        updateArrComment.reset()
-       console.log("updated successfully!!!");
+       console.log("COMMENT added successfully!!!");
      })
   })
 }
-//   FUNCTION TO ADD ROW BELOW THE TABLE
-function generateBlogCard(title,body, dateCreated, Id) {
 
+//   FUNCTION TO ADD THE BLOG DETAILS AFTER HITTING READ MORE
+function generateBlogCard(title,body, dateCreated, Id) {
 let parentDiv = document.getElementById('parent');
 let mainContentDiv = document.createElement('div')
 mainContentDiv.id = `${Id}`
