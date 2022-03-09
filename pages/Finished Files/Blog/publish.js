@@ -49,35 +49,17 @@ buttoni.forEach((buttonItem, index)=>{
       const docRef = doc(db, "admin-page", arr_id[index]);
       getDoc(docRef)
       .then((doc)=>{
+        // document.querySelector(".container").remove();
         console.log(`Document data:`,doc.data().Body, doc.id);
-        console.log(doc.id)
-let mainContent = document.getElementById('readMore');
-console.log(mainContent)
-      let  dateArticleDiv = document.createElement("div")
-      dateArticleDiv.className = "date"
-      dateArticleDiv.appendChild(document.createTextNode(` Date created: ${doc.data().CreatedAt.toDate().toDateString()}`))
-      let authorArticleDiv = document.createElement("div")
-      authorArticleDiv.className = "author"
-      authorArticleDiv.appendChild(document.createTextNode("Author: "+"NIYONKURU Sylvain"))
-      let titleArticleDiv = document.createElement("div")
-      titleArticleDiv.className = "title"
-      titleArticleDiv.appendChild(document.createTextNode(doc.data().Title))
-      let bodyArticleDiv = document.createElement("div")
-      bodyArticleDiv.className = "body"
-      let paraArticleDiv = document.createElement("p")
-      paraArticleDiv.appendChild(document.createTextNode(doc.data().Body))
-      bodyArticleDiv.appendChild(paraArticleDiv)
-      let articleDiv = document.createElement("div")
-      articleDiv.setAttribute("id", doc.id)
-      articleDiv.appendChild(dateArticleDiv)
-      articleDiv.appendChild(authorArticleDiv)
-      articleDiv.appendChild(titleArticleDiv)
-      articleDiv.appendChild(bodyArticleDiv)
-      mainContent.append(articleDiv)
+        // console.log(doc.id)
+        let bodi = doc.data().Body;
+        let titlee = doc.data().Title;
+        let datee = doc.data().CreatedAt.toDate().toDateString();
+        readMore(bodi, titlee, datee);
+    
+      // console.log("going to new page")
 
-      console.log("going to new page")
-
-      window.location.href = './readMore.html';
+      // window.location.href = './readMore.html';
     });
     }
     
@@ -187,3 +169,89 @@ parentDiv.appendChild(mainPopupDiv);
 
 parentDiv.appendChild(mainContentDiv);
     }
+
+
+function readMore(bodi, titlee, datee){
+//   let mainContent = document.getElementById('wrapper-main');
+// // console.log(mainContent)
+//       let  dateArticleDiv = document.createElement("div")
+//       dateArticleDiv.className = "date"
+//       dateArticleDiv.appendChild(document.createTextNode(` Date created: ${datee}`))
+//       let authorArticleDiv = document.createElement("div")
+//       authorArticleDiv.className = "author"
+//       authorArticleDiv.appendChild(document.createTextNode("Author: "+"NIYONKURU Sylvain"))
+//       let titleArticleDiv = document.createElement("div")
+//       titleArticleDiv.className = "title"
+//       titleArticleDiv.appendChild(document.createTextNode(titlee));
+//       let bodyArticleDiv = document.createElement("div");
+//       bodyArticleDiv.className = "body";
+//       let paraArticleDiv = document.createElement("p")
+//       paraArticleDiv.appendChild(document.createTextNode(bodi));
+//       bodyArticleDiv.appendChild(paraArticleDiv)
+//       let articleDiv = document.createElement("div")
+//       articleDiv.setAttribute("id", doc.id)
+//       articleDiv.appendChild(dateArticleDiv)
+//       articleDiv.appendChild(authorArticleDiv)
+//       articleDiv.appendChild(titleArticleDiv)
+//       articleDiv.appendChild(bodyArticleDiv)
+//       mainContent.prepend(articleDiv)
+let stringiPage = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="blog.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <title>My Blog</title>
+</head>
+<!-- <i class="fa-regular fa-bars"></i> -->
+
+<body>
+    <div id="parent">
+        <div class="navbar">
+            <ul>
+                <li id="svg">
+                    <img src="/images/Logo.svg" alt="">
+                </li>
+                <li><a href="../Landing-page/index.html">HOME</a></li>
+                <li><a href="../About-page/about.html">ABOUT</a></li>
+                <li><a href="../Contact-page/contacting.html">CONTACT</a></li>
+                <li><a href="../Log-In/login.html">LOG IN</a></li>
+            </ul>
+        </div>
+        <div id="wrapper-main">
+            <div class="title">
+                <div class="header">
+                    <h3>Welcome to my <span>Blog</span></h3>
+                </div>
+            </div><br>
+            <div class="displayContent">
+                <div class="title">
+                    <h2>${titlee}</h2>
+                </div>
+                <hr>
+                <br>
+                <div class="date">
+                    <h4> ${datee}
+                    </h4>
+                </div>
+                <div class="author">
+                    <h5>
+                        Author: NIYONKURU Sylvain.
+                    </h5>
+                </div>
+                <br> <br>
+                <div class="body">
+                    <p>
+                        ${bodi}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+`
+document.write(stringiPage);
+}
