@@ -7,6 +7,10 @@
     orderBy, getDoc,getDocs
    } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore.js"
 
+   import{getAuth, createUserWithEmailAndPassword, signOut,
+    signInWithEmailAndPassword
+} from "https://www.gstatic.com/firebasejs/9.6.7/firebase-auth.js"
+
     // Your web app's Firebase configuration
      const firebaseConfig = {
       apiKey: "AIzaSyCAMXuF7n_5lWaRI4M51Mb9aqLAMwjSOxY",
@@ -16,10 +20,13 @@
       messagingSenderId: "961539757601",
       appId: "1:961539757601:web:99007960d258cac90bf560"
     };
+
   // Initialize Firebas
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app)
   const refi = collection(db,"admin-page")
+const auth = getAuth(app)
+
 
  // FETCHING ALL DATA FROM DATABASE AND DISPLAY THEM IN THE TABLE
 displayAll(refi)
@@ -161,4 +168,21 @@ function displayAll(refi){
 // document.location.reload();
 }
 
-    
+
+
+const loginForm = document.querySelector("#logout")
+loginForm.addEventListener('click', (e) => {
+    e.preventDefault()
+  signOut(auth).then (()=>{
+    console.log("hello hello amakuru urasohotse rero");
+    goToTheLogin();
+  })
+  .catch((error)=>{
+    console.log("the error is .... ", error)
+  })
+  }
+)
+
+function goToTheLogin(){
+  window.location.href="../../Finished Files/Log-In/login.html"
+}

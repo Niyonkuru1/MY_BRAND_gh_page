@@ -24,38 +24,6 @@ import{getAuth, createUserWithEmailAndPassword, signOut,
   const db = getFirestore(app)
   const auth = getAuth(app)
 
-//signing up a user
-/*   const signUpForm = document.querySelector("#signUp")
-//   signUpForm.addEventListener('submit', (e) => {
-//       e.preventDefault()
-//       const email = signUpForm.email.value;
-//       const password = signUpForm.password.value;
-//       createUserWithEmailAndPassword(auth, email, password).
-//       then((cred)=>{
-//           console.log("User created: ", cred.user)
-//           signUpForm.reset()
-//       })
-//       .catch((err) =>{
-//          console.log("error is: ", err.message) 
-//       })
-//     })
-*/
-
-    // const logoutForm = document.querySelector("#logout")
-    // logoutForm.addEventListener('click', (e) => {
-    //     e.preventDefault()
-    // signOut(auth)
-    // .then(()=>{
-    //     console.log("user signed out")
-    // })
-    // .catch((err)=>{
-    //     console.log(err.message)
-    // })
-    // })
-
-
-
-
 // login
 const loginForm = document.querySelector("#login")
 loginForm.addEventListener('submit', (e) => {
@@ -76,7 +44,6 @@ const password = loginForm.password.value
 
 
 //FUNCTION TO ADD CONTINUE BUTTON
-
 function startAdminPage() {
     window.location.href = '../../admin/posts/index.html';
 }
@@ -87,16 +54,6 @@ function startAdminPage() {
       button.append(anch);
       logout.append(button);
     //   anch.setAttribute('href',)
-
-
-      // // Add class
-// newDiv.className= 'hello';
-
-// // Add id
-// newDiv.id = 'hello1';
-
-// // Add attr
-// newDiv.setAttribute('title', 'Hello Div');
 
 
      
