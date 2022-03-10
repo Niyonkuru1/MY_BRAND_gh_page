@@ -21,16 +21,16 @@
             <li><a href="">SKILLS</a></li>
             <li><a href="">PROJECT</a></li> -->
             <li><a href="">BLOG</a></li>
-            <li><a href="">Sign In</a></li>
-            <li><a href=" ">LOG OUT</a></li>
+            <!-- <li><a href="">Sign In</a></li> -->
+            <li><a href=" " id="logout">LOG OUT</a></li>
         </ul>
     </div>
     <div class="admin-wrapper">
         <!-- Leftside bar -->
         <div class="left-sidebar">
             <ul>
-                <li><a href="index.html">Manage Post</a></li>
-                <li><a href="../comment/">Manage Comment</a></li>
+                <li><a href="../posts/index.html">Manage Post</a></li>
+                <li><a href="../Message/">Manage Message</a></li>
             </ul>
         </div>
         <!-- // Leftside bar -->
@@ -38,12 +38,12 @@
         <!-- Admin Content -->
         <div class="admin-content">
             <div class="button-group">
-                <a href="create.html" class="btn-btn-big">Edit Comments</a>
+                <a href="create.html" class="btn-btn-big">Reply Messages</a>
                 <!-- <a href="index.html" class="btn-btn-big">Manage Post</a> -->
             </div>
 
             <div class="content">
-                <h2 class="page-title">Manage Comment</h2>
+                <h2 class="page-title">Manage Message</h2>
 
                 <table id="table">
                     <thead>
@@ -53,14 +53,14 @@
                         <th>Time Created</th>
                         <th colspan="1">Action</th>
                     </thead>
-                    <tbody>
+                    <tbody id="items">
                         <!-- This should come from database YET!!! -->
                         <!-- <tr>
                             <td>1</td>
                             <td>This is the first post</td>
                             <td>Awa</td>
                             <td><a href="#" class="edit">View all coments</a></td>
-                            <td><a href="#" class="delete">delete comments</a></td>
+                            <td><a href="#" class="delete">delete Messages</a></td>
                              <td><a href="#" class="publish">publish</a></td> 
                         </tr> -->
                     </tbody>

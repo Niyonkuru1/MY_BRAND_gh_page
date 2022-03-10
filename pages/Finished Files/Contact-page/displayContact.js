@@ -4,7 +4,7 @@
   // https://firebase.google.com/docs/web/setup#available-libraries
 
   import { getFirestore, arrayUnion, doc,
-     collection, onSnapshot,getDocs,getDoc
+     collection, onSnapshot,getDocs,getDoc,deleteDoc
 } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore.js"
   // Your web app's Firebase configuration
   const firebaseConfig = {
@@ -21,12 +21,11 @@
 const db = getFirestore(app);
 const refCom = collection(db,"comment_section");
 
-
-
-
-
-
 displayAll(refCom);
+var itemList = document.getElementById('items');
+itemList.addEventListener('click', (e)=>{
+  removeItem(e);
+});
 
 function displayAll(refi){
   onSnapshot(refi, (snapshor)=>{
@@ -45,7 +44,6 @@ function displayAll(refi){
   }
   })
 }
-
     //   FUNCTION TO ADD NEW MESSAGE SENT
     function generate_table(name, phone, message, id, whenCreated) {
       // get the reference for the body
@@ -60,3 +58,25 @@ function displayAll(refi){
     newRow.innerHTML = dt;
     newRow.setAttribute("rowid",id);
       }
+       // FUNCTION TO DELETE ROW FROM DATABASE AND FROM DOM TREE
+       function removeItem(er){
+          //FOR DELETING ENTIRE ROW FROM THE TABLE (DOM)
+          let targetRowIdToDelete = er.target.parentElement.parentElement.getAttribute("rowid");
+          const docRef = doc(db, "comment_section", targetRowIdToDelete )
+         if(er.target.classList.contains('delete')){
+           if(confirm('Warning, Are you sure to DELETE THE WHOLE MESSAGE?  Press OK to accept')){
+             var tr = er.target.parentElement.parentElement;
+             //To get the id of the post to delete
+             itemList.removeChild(tr);
+             console.log(targetRowIdToDelete);
+              //to delete the specified blog with id from the (DATABASE)
+              deleteDoc(docRef).then(()=>{
+                document.location.reload();
+                console.log("The blog deleted successfully from the database");
+             })
+             .catch((err)=>{
+               console.log(`there was an error while deleting the blog from database: ${err}`);
+             })
+           }
+         }  
+       }

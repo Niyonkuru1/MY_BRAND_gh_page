@@ -23,7 +23,7 @@
             <li><a href="">PROJECT</a></li> -->
             <li><a href="">BLOG</a></li>
             <li><a href="">CONTACT</a></li>
-            <li><a href=" ">LOG OUT</a></li>
+            <li><a href=" " id="logout">LOG OUT</a></li>
         </ul>
     </div>
     <div class="admin-wrapper">
@@ -31,7 +31,7 @@
         <div class="left-sidebar">
             <ul>
                 <li><a href="index.html">Manage Post</a></li>
-                <li><a href="../comment/index.html">Manage Comment</a></li>
+                <li><a href="../Message/index.html">Manage Message</a></li>
             </ul>
         </div>
         <!-- // Leftside bar -->
@@ -40,22 +40,22 @@
         <div class="admin-content">
             <div class="button-group">
                 <!-- <a href="create.html" class="btn-btn-big">Create New Post</a> -->
-                <a href="index.html" class="btn-btn-big">Manage Comment</a>
+                <a href="index.html" class="btn-btn-big">Manage Message</a>
             </div>
 
             <div class="content">
                 
-                <h2 class="page-title">Delete Comment</h2>
-                <form id="comment" method="post">
+                <h2 class="page-title">Reply Message</h2>
+                <form id="Message" method="post">
                     <div>
-                    <label>Title of the blog being comment on</label>
+                    <label>Subject</label>
                     <input type="text" name="title" class="field" ></div>
                     <div>
-                    <label>Comment message </label>
+                    <label>Message</label>
                     <textarea name="message" id="body" class="field"></textarea></div>
                     <div>
                     <button type="submit" class="btn-big">
-                        Delete Comments 
+                      Send reply 
                     </button></div>
                 </form>
             </div>
