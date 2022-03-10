@@ -36,6 +36,7 @@ for (let g=0; g < data.length; g++){
   data[g]["CreatedAt"].toDate().toDateString(), data[g]["id"])
   arr_id.push(data[g]["id"]);
 }
+createFooter()
 console.log(arr_id);
 // for (let p=0; p < arr_id.length; p++){
   // var hummer = arr_id;
@@ -89,6 +90,7 @@ addComment()
 })
 // document.location.reload();
 })
+
 // document.location.reload();
 function addComment(){
   const updateArrComment = document.getElementById('addComArr')
@@ -164,10 +166,12 @@ parentDiv.appendChild(mainPopupDiv);
   headDiv.appendChild(tostyleDiv)
   containerDiv.appendChild(imgDiv)
   containerDiv.appendChild(headDiv)
-
   mainDiv.appendChild(containerDiv)
-
 parentDiv.appendChild(mainContentDiv);
+
+// TO CREATE THE FOOTER
+
+
     }
 
 
@@ -254,4 +258,75 @@ let stringiPage = `<!DOCTYPE html>
 </html>
 `
 document.write(stringiPage);
+}
+
+
+function createFooter(){
+  let mainDivu = document.getElementById('wrapper-main')
+  let footerDiv = document.createElement("div");
+  let Div1 = document.createElement("div");
+
+footerDiv.className = "footerMain"
+let fDiv1 = document.createElement("div");
+  fDiv1.className = "footer1"
+let f1h2 = document.createElement("h2");
+f1h2.appendChild(document.createTextNode('Links'))
+let ul = document.createElement("ul");
+let l1 = document.createElement("li");
+l1.appendChild(document.createTextNode('Skills'))
+let l2 = document.createElement("li");
+l2.appendChild(document.createTextNode('Blogs'))
+let l3 = document.createElement("li");
+l3.appendChild(document.createTextNode('About me'))
+let l4 = document.createElement("li");
+l4.appendChild(document.createTextNode('Contact me'))
+ul.appendChild(l1)
+ul.appendChild(l2)
+ul.appendChild(l3)
+ul.appendChild(l4)
+Div1.appendChild(f1h2)
+Div1.appendChild(ul)
+fDiv1.appendChild(Div1)
+// fDiv1.appendChild(ul);
+
+let fDiv2 = document.createElement("div");
+fDiv2.className = "footer1"
+let f2h2 = document.createElement("h2");
+f2h2.appendChild(document.createTextNode('Subscribe'))
+let f2p = document.createElement("p");
+f2p.appendChild(document.createTextNode('Lorem ipsum kkkkkkjhghjjhgfgh'))
+let f2form = document.createElement('form')
+let f2formInput = document.createElement('input')
+f2formInput.setAttribute('type','text')
+let f2formButton = document.createElement('button')
+f2formButton.setAttribute('type','submit')
+f2formButton.appendChild(document.createTextNode("Send"))
+f2form.appendChild(f2formInput)
+f2form.appendChild(f2formButton)
+
+fDiv2.appendChild(f2h2)
+fDiv2.appendChild(f2p)
+fDiv2.appendChild(f2form)
+
+let fDiv3 = document.createElement("div");
+fDiv3.className = "footer1"
+let f3h2 = document.createElement("h2");
+f3h2.appendChild(document.createTextNode("Follow me on:"))
+let f3Img = document.createElement("img"); 
+f3Img.setAttribute('src','../../../images/social_media.svg')
+fDiv3.appendChild(f3h2)
+fDiv3.appendChild(f3Img)
+
+let fDiv4 = document.createElement("div");
+fDiv4.className = "footer2"
+let f4p = document.createElement("p");
+f4p.appendChild(document.
+  createTextNode(`Copyright 2022 all right reserved | 
+  Made by Sylvain`))
+fDiv4.appendChild(f4p)
+footerDiv.appendChild(fDiv1)
+footerDiv.appendChild(fDiv2)
+footerDiv.appendChild(fDiv3)
+footerDiv.appendChild(fDiv4)
+mainDivu.appendChild(footerDiv);
 }

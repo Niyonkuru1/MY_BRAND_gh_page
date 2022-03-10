@@ -62,8 +62,8 @@ ul a {
 .title {
     grid-column-start: 1;
     grid-column-end: 3;
-   
 }
+
 .title {
     display: flex;
     flex-direction: row;
@@ -265,6 +265,31 @@ hr{
     color: #EB00FF;
     border: 2px solid #e366eede;
     /* outline: none; */
-
 }
+
+/* FOOTER SECTION START */
+.footerMain {
+    background-color:black;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows:20%;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: white;
+}
+
+.footer2{
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row-start: 20;
+    text-align: center;
+}
+.footer2 > p > span {
+    color: blueviolet;
+}
+.footerMain {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+/* FOOTER SECTION END */
+
 
