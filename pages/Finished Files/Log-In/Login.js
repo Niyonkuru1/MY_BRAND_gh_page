@@ -29,13 +29,15 @@ const loginForm = document.querySelector("#login")
 loginForm.addEventListener('submit', (e) => {
     e.preventDefault()
     const email = loginForm.email.value;
-const password = loginForm.password.value
+const password = loginForm.password.value;
+console.log(email, password);
 
     signInWithEmailAndPassword(auth, email, password)
     .then((cred)=> {
         console.log("User loged in: ", cred.user)
         // generate_table();
-        startAdminPage();
+    window.location.href="../../admin/posts/indexPost.html";
+        // startAdminPage();
     })
     .catch((err)=> {
         console.log(err.message)
@@ -45,14 +47,13 @@ const password = loginForm.password.value
 
 //FUNCTION TO ADD CONTINUE BUTTON
 function startAdminPage() {
-    window.location.href = '../../admin/posts/index.html';
 }
-  let logout = document.querySelector('.cont');
-      let button = document.createElement(".cont");
-      let anch = document.createElement ('a');
-      anch.innerHTML = 'Logout';
-      button.append(anch);
-      logout.append(button);
+  // let logout = document.querySelector('.cont');
+  //     let button = document.createElement(".cont");
+  //     let anch = document.createElement ('a');
+  //     anch.innerHTML = 'Logout';
+  //     button.append(anch);
+  //     logout.append(button);
     //   anch.setAttribute('href',)
 
 
